@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="120x120" href="./img/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+<link rel="manifest" href="./img/favicon/site.webmanifest">
+<link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- END FAVICON -->
+    <script src="./js/board.js" defer></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/mini_backend.js"></script>
+    <script src="./js/contacts.js"></script>
+    <script src="./js/add_task.js"></script>
+    <script src="./js/templates.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="./css/contacts.css">
+    <link rel="stylesheet" href="./css/add_task.css">
+    <link rel="stylesheet" href="./css/board.css">
+    <link rel="stylesheet" href="./css/navAndHeader.css">
+
+    <title>Board</title>
+</head>
+
+<body onload="includeHTML();initB()">
+    <div class="overflow-hidden">
+        <div w3-include-html="templates/header.html"></div>
+        <div id="board-main-page" class="board-page d-flex">
+            <div w3-include-html="./templates/nav.html"></div>
+
+            <div class="container">
+                <div w3-include-html="templates/legal.html" class="d-none" id="legal-template"></div>
+                <div w3-include-html="templates/help.html" class="d-none" id="help-template"></div>
+                <div onclick="closeOverlay()" class="task-overlay-bg d-flex just-center align-center d-none"
+                    id="overlay-bg">
+
+                    <!-- task overlay -->
+                    <div onclick="stopProp(event)" class="task-overlay d-flex flex-col d-none" id="task-overlay">
+
+
+                    </div>
+                    <!-- task overlay end -->
+
+                    <!-- task edit -->
+                    <div onclick="stopProp(event)" class="task-overlay-edit d-none" id="task-edit">
+
+                    </div>
+                    <!-- task edit end -->
+
+                </div>
+
+                <div onclick="openAddTask('to_do')" class="d-flex just-center align-center d-none" id="add-task-bg">
+                    <div onclick="stopProp(event)" class="add-task-float d-none" id="add-task">
+
+                        
+                    </div>
+                </div>
+
+                <section class="d-flex just-center align-center" id="search-task">
+                    <div class="search-task-web-wrapper d-flex align-center">
+                        <div class="search-task-web d-flex flex-row align-center">
+                            <div class="input-wrapper d-flex flex-row align-center">
+                                <input class="input-field d-flex flex-row just-center align-center fm-inter-400" oninput="searchTask()"
+                                    type="text" id="search-task-web" placeholder="Find Task">
+                                <div class="search-icon-wrapper d-flex flex-row align-center">
+                                    <div class="vector"></div>
+                                    <img src="img/icons/Vector.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div onclick="openAddTask('to_do')"
+                            class="secondary-plus-v1 d-flex just-center align-center flex-row cl-main fm-OpenSA-400">
+                            <span>Add task<img class="add-task-cross" src="img/icons/cross.png"></span>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="task-row-wrapper d-flex" id="task-row-wrapper">
+
+                    <div class="task-row d-flex flex-col">
+                        <div class="task-header d-flex flex-row align-center fm-OpenSA-700">
+                            <span>To Do</span>
+                            <div class="plus-btn" onclick="openAddTask('to_do')">
+                                <img class="img-top" src="img/icons/plus button v1.png">
+                                <img class="img-bottom" src="img/icons/plus button v2.png">
+                            </div>
+                        </div>
+
+
+                        <div class="height-100" ondrop="moveTo('to_do')"
+                            ondragover="allowDrop(event)" ondragleave="removeHighlight('to_do')"
+                            onmousedown="throwState(0)" id="to_do">
+
+
+                            <!-- cards with the state of to_do will be rendered here -->
+                        </div>
+
+                    </div>
+
+                    <div class="task-row d-flex flex-col">
+                        <div class="task-header d-flex flex-row align-center fm-OpenSA-700">
+                            <span>In progress</span>
+                            <div class="plus-btn" onclick="openAddTask('in_progress')">
+                                <img class="img-top" src="img/icons/plus button v1.png">
+                                <img class="img-bottom" src="img/icons/plus button v2.png">
+                            </div>
+                        </div>
+
+                        <div class="height-100" ondrop="moveTo('in_progress')"
+                            ondragover="allowDrop(event)"
+                            ondragleave="removeHighlight('in_progress')" onmousedown="throwState(1)" id="in_progress">
+                            <!-- cards with the state of in_progress will be rendered here -->
+                        </div>
+                    </div>
+
+                    <div class="task-row d-flex flex-col">
+                        <div class="task-header d-flex flex-row align-center fm-OpenSA-700">
+                            <span>Await feedback</span>
+                            <div class="plus-btn" onclick="openAddTask('await_feedback')">
+                                <img class="img-top" src="img/icons/plus button v1.png">
+                                <img class="img-bottom" src="img/icons/plus button v2.png">
+                            </div>
+                        </div>
+
+                        <div class="height-100" ondrop="moveTo('await_feedback')"
+                            ondragover="allowDrop(event)"
+                            ondragleave="removeHighlight('await_feedback')" onmousedown="throwState(2)"
+                            id="await_feedback">
+                            <!-- cards with the state of await_feedback will be rendered here -->
+                        </div>
+
+                    </div>
+
+                    <div class="task-row d-flex flex-col">
+                        <div class="task-header d-flex flex-row align-center fm-OpenSA-700">
+                            <span>Done</span>
+                            <div class="plus-btn" onclick="openAddTask('done')">
+                                <img class="img-top" src="img/icons/plus button v1.png">
+                                <img class="img-bottom" src="img/icons/plus button v2.png">
+                            </div>
+                        </div>
+
+                        <div class="height-100" ondrop="moveTo('done')"
+                            ondragover="allowDrop(event)" ondragleave="removeHighlight('done')"
+                            onmousedown="throwState(3)" id="done">
+                            <!-- cards with the state of done will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img id="add-to-board" class="add-to-board" src="img/icons/added to board.png">
+        </div>
+    </div>
+</body>
+
+</html>

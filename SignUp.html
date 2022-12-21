@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="120x120" href="./img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!-- END FAVICON -->
+    <link rel="stylesheet" href="css/SignUp.css">
+    <script src="./js/mini_backend.js"></script>
+    <script src="./js/register.js"></script>
+
+    <title>Join-SignUp</title>
+
+
+</head>
+
+<body onload="loadUsers()">
+    <div class="page-container">
+        <!-- START HEADER -->
+        <header>
+            <div class="signup-header-left">
+                <img id="signup-header-logo" src="./img/icons/Join.png" alt="Join Logo">
+            </div>
+        </header>
+        <!-- END HEADER  -->
+
+        <!-- START SIGNUP FORM -->
+
+        <section id="signup">
+            <form id="signup-form" onsubmit="addUser(); return false">
+                <img onclick="window.location.href ='index.html'" id="signup-back-arrow"
+                    src="./img/icons/arrow left blue.png">
+                <div class="signup-form-head">
+                    <h1 id="signup-form-title">Sign up</h1>
+                    <div id="signup-form-underline"></div>
+                </div>
+                <div id="signup-form-input-container">
+                    <div class="signup-form-input-row">
+                        <input type="text" placeholder="Name" id="name" required>
+                        <img src="./img/icons/user.png" alt="User-Icon">
+                    </div>
+                    <div class="signup-form-input-row">
+                        <input type="email" placeholder="Email" id="email" required>
+                        <img src="./img/icons/Mail.png" alt="Email Icon">
+                    </div>
+                    <div class="signup-form-input-row">
+                        <input type="password" placeholder="Password" id="password" minlength="6" required>
+                        <img src="./img/icons/lock.png" alt="Password Icon">
+                    </div>
+                    <div class="signup-form-button-container">
+                        <button id="login-button">Sign up</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- END SIGNUP FORM -->
+
+        <div class="signup-sucessfull d-none" id="signup-sucessfull">
+            Sign up successfull!
+        </div>
+    </div>
+
+</body>
+
+</html>

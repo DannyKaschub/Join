@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="120x120" href="./img/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+<link rel="manifest" href="./img/favicon/site.webmanifest">
+<link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- END FAVICON -->
+    <title>Join</title>
+    <script src="./js/mini_backend.js"></script>
+    <script src="./js/register.js"></script>
+    <script src="./js/login.js"></script>
+    <script type="text/javascript" src="js/index.js" defer></script>
+</head>
+<body onload="loading(); loadUsers()">
+    <div id="animation">
+        <img src="./img/icons/Join.png" class="">
+    </div>
+    <div class="page-container" id="page-container">
+        <!-- START HEADER -->
+        <header>
+            <div class="index-header-left">
+                <img id="index-header-logo" src="./img/icons/Join_blue.png" alt="Join Logo">
+            </div>
+            <div class="index-header-right">
+                <div class="index-header-registry-box">
+                    <div>Not a Join user?</div>
+                    <button onclick="window.location.href ='./SignUp.html'" class="index-header-button">Sign up</button>
+                </div>
+            </div>
+        </header>
+        <!-- END HEADER  -->
+
+        <!-- START LOGIN FORM -->
+
+        <section id="index-login">
+            <form id="login-form" onsubmit="login(); return false">
+                <div class="index-form-head">
+                    <h1 id="index-form-title">Log in</h1>
+                    <div id="index-form-underline"></div>
+                </div>
+                <div id="index-form-input-container">
+                    <div class="index-form-input-row">
+                        <input type="email" placeholder="Email" id="input-email" required>
+                        <img src="./img/icons/Mail.png" alt="Email Icon">
+                    </div>
+                    <div class="index-form-input-row">
+                        <input oninput="changeVisibilityOnInput()"type="password" placeholder="Password" id="input-password" minlength="6" required >
+                        <img onclick="changeVisibility()"  src="./img/icons/lock.png" alt="Password Icon" id="login-password-image">
+                    </div>
+                    <div id="wrong-password" class="index-form-row wrong-input d-none">Wrong Email / Password</div>
+                    <div class="index-form-row">
+                        <div id="index-form-checkbox">
+                            <div onclick="toggleCheckbox()" class="index-checkbox-box">
+                            <img id="index-form-checkbox-icon" src="./img/icons/unchecked.png" alt="checkbox-unchecked-icon">
+                            <img id="index-checked-checkbox" class="d-none" src="./img/icons/check-mark-7-16.png" alt="checked-checkbox-icon">
+                            </div>
+                            <div>Remember me</div>
+                        </div>
+                            <a href="./forgotMyPassword.html">Forgot my password</a> 
+                    </div>
+                    <div class="index-form-button-container">
+                        <button id="login-button"> Log in</button>
+                        <button id="guest-login-button" onclick="guestLogin()" type="button">Guest Log in</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <div class="index-mobile index-header-right">
+            <div class="index-header-registry-box">
+                <div>Not a Join user?</div>
+                <button onclick="window.location.href = 'SignUp.html' " class="index-header-button">Sign up</button>
+            </div>
+        </div>
+
+        <!-- END LOGIN FORM -->
+
+
+    </div>
+    
+</body>
+</html>

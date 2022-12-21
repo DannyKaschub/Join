@@ -1,0 +1,23 @@
+<header id="header">
+  <div class="header-left">
+    <img class="nav-logo" src="./img/icons/Join.png" alt="">
+  </div>
+
+  <div class="header-right">
+    <span>Kanban Project Management Tool</span>
+    <!-- <img class="header-icon" src="./img/icons/help.png" alt="">
+    <img class="header-icon" src="../img/icons/help.png" alt="" onclick="toggleHelp()"> -->
+    <img class="header-icon" src="./img/icons/help.png" alt="" onclick="toggleHelp('legal-template')">
+    <div class="profile-img-container">
+      <img onclick="openMobileMenu()" class="header-profile-img" id="header-profile" src="./img/icons/christina.png" alt="profilePicturePNG">
+      <ul id="userMenu">
+        <li onclick="window.location.href ='./index.html'">Log out</li>
+      </ul>
+      <ul id="mobile-menu" class="d-none">
+        <li onclick="toggleHelp('legal-template')">Help</li>
+        <li onclick="toggleLegal('help-template')">Legal notice</li>
+        <li onclick="window.location.href = './index.html'">Log out</li>
+      </ul>
+    </div>
+  </div>
+</header>

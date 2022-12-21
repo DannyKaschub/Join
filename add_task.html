@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- FAVICON -->
+<link rel="apple-touch-icon" sizes="120x120" href="./img/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+<link rel="manifest" href="./img/favicon/site.webmanifest">
+<link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<!-- END FAVICON -->
+    <script src="./js/main.js" defer></script>
+    <script src="./js/mini_backend.js"></script>
+    <script src="./js/contacts.js"></script>
+    <script src="./js/add_task.js"></script>
+    <script src="./js/templates.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/contacts.css">
+    <link rel="stylesheet" href="css/add_task.css">
+    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="./css/navAndHeader.css">
+
+    <title>Add Task</title>
+</head>
+
+<body onload="includeHTML();init()">
+
+    <div w3-include-html="templates/header.html" class="hide-header"></div>
+    <div class="overflow-hidden">
+        <div class="add-task-page d-flex">
+            <div w3-include-html="./templates/nav.html"></div>
+            <div class="container">
+                <div w3-include-html="templates/legal.html" class="d-none" id="legal-template"></div>
+                <div w3-include-html="templates/help.html" class="d-none" id="help-template"></div>
+
+                <form class="d-flex overflow-auto flex-switch" onsubmit="addToBoard(); return false;" id="add-task">
+                    <div class="mobile-add-task">
+                        <div class="join-logo">
+                            <img class="join-logo" src="img/icons/join logo.png">
+                        </div>
+                        <div>
+                            <button class="create-task fm-OpenSA-400">Create&nbsp; <img
+                                    src="img/icons/add task check.png"></button>
+                        </div>
+                    </div>
+                    <div class="add-task-form">
+                        <div class="add-task-header ">
+                            <input class="fm-OpenSA-700" min="1" placeholder="Enter a title" required id="title">
+                            <span class="required fm-inter-400 d-none">This field is required</span>
+                        </div>
+                        <div class="add-task-assigned">
+                            <div class="dropdown-wrapper" onclick="showDropdown('contact-list')">
+                                <div class="d-flex">
+                                    <div class="select fm-OpenSA-400">
+                                        Select contacts to assign
+                                    </div>
+                                    <div class="select-icon">
+                                        <div>
+                                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none" class="posX"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M2.2 0H1.41421C0.523309 0 0.0771403 1.07714 0.707105 1.70711L6.29289 7.29289C6.68342 7.68342 7.31658 7.68342 7.70711 7.29289L13.2929 1.70711C13.9229 1.07714 13.4767 0 12.5858 0H11.8H7H2.2Z"
+                                                    fill="#4589FF" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="option-wrapper d-flex flex-col d-none" id="contact-list"
+                                    onclick="stopProp(event)">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-task-date">
+                            <span class="fm-OpenSA-700">Due date</span>
+                            <div>
+                                <input class="due-date fm-OpenSA-400" type="date" required id="date">
+                            </div>
+                            <span class="required fm-inter-400 d-none">This field is required</span>
+                        </div>
+
+                        <div class="add-task-assigned" id="category-body">
+                            <span class="fm-OpenSA-700">Category</span>
+
+                            <div class="dropdown-wrapper" onclick="showDropdown('categories')">
+                                <div class="d-flex">
+                                    <div class="select fm-OpenSA-400">
+                                        Select new category
+                                    </div>
+                                    <div class="select-icon">
+                                        <div>
+                                            <svg width="14" height="8" viewBox="0 0 14 8" fill="none" class="posX"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M2.2 0H1.41421C0.523309 0 0.0771403 1.07714 0.707105 1.70711L6.29289 7.29289C6.68342 7.68342 7.31658 7.68342 7.70711 7.29289L13.2929 1.70711C13.9229 1.07714 13.4767 0 12.5858 0H11.8H7H2.2Z"
+                                                    fill="#4589FF" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="option-wrapper d-flex flex-col d-none" id="categories"
+                                    onclick="stopProp(event)">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-overlay-edit-prio">
+                            <div class="prio-container" id="priorities">
+
+
+                            </div>
+                        </div>
+                        <div class="task-overlay-edit-descr">
+                            <span class="fm-OpenSA-700">Description</span>
+                            <div>
+                                <textarea class="fm-OpenSA-400" id="description" required></textarea>
+                                <img src="./img/icons/textarea icon.png">
+                            </div>
+                        </div>
+                        <!--New subtask-->
+                        <div class="subtask-container">
+                            <h3 id="subtaskTitle">Subtasks</h3>
+                            <div class="checkAndCrossIcons">
+                                <input id="subtaskText" type="text" placeholder="Add new subtask" />
+                                <div class="iconcontainer">
+                                    <img onclick="pushSubtaskLocalStorage()" src="img/icons/check blue.png" alt="">
+                                    <img  onclick="clearSubtask()" src="img/icons/cancel blue.png" alt="">
+                                </div>
+
+                               <!-- <i onclick="clearSubtask()" class="pointer"></i>
+                                <img src="./assets/img/icons/trennstrich.png" />
+                                <i onclick="pushSubtaskLocalStorage()" class="pointer"></i>-->
+                            </div>
+                            <div id="mistakeReportsubtask"></div>
+                            <div class="taskFooter">
+                                <div id="addSubtaskCheckbox"></div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="add-task-button-container">
+                        <div class="btn-wrapper">
+                            <div class="clear fm-OpenSA-400" onclick="clearInputs()">Clear <img
+                                    src="img/icons/cancel task.png"></div>
+                            <button class="create-task fm-OpenSA-400">Create Task <img
+                                    src="img/icons/add task check.png"></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <img id="add-to-board" class="add-to-board" src="img/icons/added to board.png">
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,433 @@
+/* open-sans-regular - latin */
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/open-sans-v34-latin-regular.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/open-sans-v34-latin-regular.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/open-sans-v34-latin-regular.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/open-sans-v34-latin-regular.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/open-sans-v34-latin-regular.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/open-sans-v34-latin-regular.svg#OpenSans') format('svg');
+    /* Legacy iOS */
+}
+
+/* open-sans-700 - latin */
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/open-sans-v34-latin-700.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/open-sans-v34-latin-700.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/open-sans-v34-latin-700.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/open-sans-v34-latin-700.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/open-sans-v34-latin-700.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/open-sans-v34-latin-700.svg#OpenSans') format('svg');
+    /* Legacy iOS */
+}
+
+/* open-sans-800 - latin */
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 800;
+    src: url('../fonts/open-sans-v34-latin-800.eot');
+    /* IE9 Compat Modes */
+    src: local(''),
+        url('../fonts/open-sans-v34-latin-800.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */
+        url('../fonts/open-sans-v34-latin-800.woff2') format('woff2'),
+        /* Super Modern Browsers */
+        url('../fonts/open-sans-v34-latin-800.woff') format('woff'),
+        /* Modern Browsers */
+        url('../fonts/open-sans-v34-latin-800.ttf') format('truetype'),
+        /* Safari, Android, iOS */
+        url('../fonts/open-sans-v34-latin-800.svg#OpenSans') format('svg');
+    /* Legacy iOS */
+}
+
+/* GLOBAL */
+
+:root{
+    --main-color: #4589FF;
+    --dark-blue: #005DFF;
+    --button-hover-shadow:rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;   
+}
+
+body{
+    font-family: "Open Sans";
+    margin: 0;
+    background-color: #4589FF;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+img{
+    object-fit: contain;
+}
+
+.page-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 80vh;
+    gap: 16px;
+}
+
+.signup-mobile{
+    display: none!important;
+
+}
+
+
+.d-none{
+    display: none!important;
+}
+
+/* Header */
+
+
+header{
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.signup-header-left{
+    display: flex;
+}
+
+#signup-header-logo{
+    width: 70px;
+    object-fit: contain;
+}
+
+
+/* SIGNUP CARD */
+
+
+
+#signup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 32px;
+    width: 45%;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+    border-radius: 30px;
+    padding: 3rem;
+    background-color: white;
+}
+
+#signup-form{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 32px;
+}
+
+.signup-form-head{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    font-size: 3rem;
+}
+
+#signup-back-arrow{
+    position: absolute;
+    width: 2rem;
+    object-fit: contain;
+    left: 0;
+    cursor: pointer;
+}
+
+.signup-form-head h1{
+    margin: 0;
+}
+
+#signup-form-underline{
+    display: flex;
+    justify-content: center;
+    width: 13rem;
+    height: 0.5rem;
+    background-color: #4589FF;
+    border-radius: 8px;
+}
+
+#signup-form-input-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 32px;
+}
+
+.signup-form-input-row{
+    display: flex;
+    width: 100%;
+    border-bottom: 2px solid lightgray;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.2);
+}
+
+.signup-form-input-row input{
+    display: flex;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    font-family: "Open Sans";
+}
+
+.signup-form-row{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.signup-form-row a{
+    text-decoration: none;
+    cursor: pointer;
+    color: #4589FF;
+}
+
+
+
+
+
+.signup-form-button-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 32px;
+}
+
+.signup-form-button-container button{
+    display: flex;
+    width: 100px;
+    height: 48px;
+    border-radius: 8px;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+#login-button{
+    background-color: var(--main-color);
+    color: white;
+    transition: 125ms ease-in-out;
+    
+}
+
+#login-button:hover{
+    box-shadow: var(--button-hover-shadow);
+    background-color: var(--dark-blue);
+    transition: all 125ms ease-in-out;
+}
+
+#guest-login-button{
+    width: 150px;
+    color: gray;
+    background-color: transparent;
+    border: 1px solid gray
+}
+
+#guest-login-button:hover{
+    border: 1px solid var(--dark-blue);
+    color: var(--main-color);
+    box-shadow: var(--button-hover-shadow);
+    transition: all 125ms ease-in-out;
+}
+
+.wrong-input{
+    position: absolute;
+    bottom: 43%;
+    display: flex;
+    color: red;
+    font-size: 0.6rem;
+}
+
+
+.signup-sucessfull{
+    position: absolute;
+    bottom: 10%;
+    display: flex;
+    width: 20%;
+    justify-content: center;
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: var(--button-hover-shadow);
+    animation-name: successfull;
+    animation-duration: 500ms ;
+    color: rgb(12, 201, 12);
+    font-weight: bold;
+    
+}
+
+.signup-unsuccessfull{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    animation-name: unsuccessfull;
+    animation-duration: 500ms ;
+
+}
+
+
+@keyframes successfull {
+    from {
+        bottom: -30%;
+        color: black;
+    } 
+    to {
+        bottom: 10%;
+        color: rgb(12, 201, 12);
+    };
+}
+
+
+@keyframes unsuccessfull {
+    from {
+        bottom: -30%;
+        color: black;
+    } 
+    to {
+        bottom: 10%;
+        color: red;
+    };
+}
+
+@media (max-width: 1024px){
+    #signup{
+        width: 90%;
+    }
+
+    .signup-sucessfull{
+        width: 50%;
+    }
+}
+
+@media (max-width: 768px){
+
+    .page-container{
+        gap: 16px;
+    }
+
+    header{
+        padding: 1rem;
+    }
+
+    #signup{
+        padding: 1rem;
+        gap: 16px;
+    }
+
+    #signup-form-input-container{
+        gap: 16px;
+    }
+
+    h1{
+        font-size: 2rem;
+    }
+
+    #signup-header-logo{
+        width: 40px;
+    }
+
+
+
+    .signup-mobile{
+        display: flex!important;
+    }
+
+    .signup-form-head{
+        gap: 8px;
+    }
+
+    #signup-form-underline{
+      justify-content: center;
+      width: 6rem;
+      height: 4px;  
+    }
+
+    .singup-form-row{
+        gap: 16px;
+        flex-direction: column;
+    }
+
+    .wrong-input{
+        bottom: 58%;
+    }
+
+    .signup-form-button-container{
+        gap: 16px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .signup-form-button-container button{
+        width: 150px;
+    }
+
+    .signup-form-input-row input{
+        font-size: 1rem;
+    }
+
+
+    .signup-unsuccessfull{
+        bottom: 35%;
+        width: 80%;
+    }
+
+    @keyframes successfull {
+        from {
+            bottom: -30%;
+        } 
+        to {
+            bottom: 35%;
+        };
+    }
+
+    @keyframes unsuccessfull {
+        from {
+            bottom: -30%;
+            color: black;
+        } 
+        to {
+            bottom: 10%;
+            color: red;
+        };
+    }
+    
+
+}

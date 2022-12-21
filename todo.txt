@@ -1,0 +1,19 @@
+blaue button login unterschiedliche schrift         Check
+sign up läd kein css                                Check
+forgot password text zentrieren                     Check
+sign up aufm handy ganz unten? mocup                Check
+erste seite klebt am boden                          Check        änderung summory 135 margin bottom 50px
+
+add tast button fest machen                                         addTasc.css 476 classe feste position
+subtasks sollten gehen???
+add contact oben rechts kreuz?                      Check          contacts modal-x und modal-x button erstellt plus html button
+add kontakt über das ganze menü                     Check    auf meinem bildschrim xd
+board 545 schmeist fehler kann null nicht lesen classlist   Check  Funktion wird denke garnicht aufgerufen
+
+
+
+feedback 2
+
+sign up läd wieder nicht            Schreibfehler gehabt 
+button links sind nur auf der schrift     gröse der links auf 100% gesetzt
+task bearbeiten unten die überlapung beseitigt

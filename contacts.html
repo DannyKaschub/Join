@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FAVICON -->
+    <link rel="apple-touch-icon" sizes="120x120" href="./img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="./img/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!-- END FAVICON -->
+
+    <script src="./js/mini_backend.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+    <script src="./js/login.js"></script>
+    <script src="./js/users.js"></script>
+    <script src="./js/contacts.js"></script>
+    <script src="./js/board.js"></script>
+    <script src="./js/add_task.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/templates.js"></script>
+    
+    <link rel="stylesheet" href="./css/add_task.css">
+    <link rel="stylesheet" href="./css/board.css">
+    <link rel="stylesheet" href="./css/contacts.css">
+    <link rel="stylesheet" href="./css/navAndHeader.css">
+
+    <title>Join - Contacts</title>
+</head>
+
+<body onload="initC();includeHTML()">
+
+    <div onclick="openAddTask()" class="d-flex just-center align-center d-none" id="add-task-bg">
+        <div onclick="stopProp(event)" class="add-task-float d-none" id="add-task">
+            <form class="d-flex flex-col" onsubmit="addToBoard(); return false;">
+                <div class="mobile-add-task">
+                    <div class="join-logo">
+                        <img class="join-logo" src="img/icons/join logo.png">
+                    </div>
+                    <div>
+                        <button class="create-task fm-OpenSA-400">Create&nbsp; <img
+                                src="img/icons/add task check.png"></button>
+                    </div>
+                </div>
+                <div class="add-task-exit-wrapper">
+                    <span class="fm-OpenSA-700 fs-48 mobile-span">Add Task</span>
+                    <img onclick="openAddTask()" class="add-task-exit" src="./img/icons/overlay exit button.png">
+                </div>
+                <div class="button-container">
+                    <div class="add-task-btn-wrapper">
+                        <span class="fm-OpenSA-700 fs-48">Add Task</span>
+                        <button class="create-task fm-OpenSA-400">Create Task<img
+                                src="img/icons/add task check.png"></button>
+                    </div>
+                </div>
+                <div class="add-task-form">
+                    <div class="add-task-header ">
+                        <input class="fm-OpenSA-700" min="1" placeholder="Enter a title" required id="title">
+                        <span class="required fm-inter-400 d-none">This field is required</span>
+                    </div>
+                    <div class="add-task-assigned">
+                        <div class="dropdown-wrapper" onclick="showDropdown('contact-list')">
+                            <div class="d-flex">
+                                <div class="select fm-OpenSA-400">
+                                    Select contacts to assign
+                                </div>
+                                <div class="select-icon">
+                                    <div>
+                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" class="posX"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M2.2 0H1.41421C0.523309 0 0.0771403 1.07714 0.707105 1.70711L6.29289 7.29289C6.68342 7.68342 7.31658 7.68342 7.70711 7.29289L13.2929 1.70711C13.9229 1.07714 13.4767 0 12.5858 0H11.8H7H2.2Z"
+                                                fill="#4589FF" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option-wrapper d-flex flex-col d-none" id="contact-list"
+                                onclick="stopProp(event)">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="add-task-date">
+                        <span class="fm-OpenSA-700">Due date</span>
+                        <div>
+                            <input class="due-date fm-OpenSA-400" type="date" required id="date">
+                        </div>
+                        <span class="required fm-inter-400 d-none">This field is required</span>
+                    </div>
+                    <div class="add-task-assigned" id="category-body">
+                        <span class="fm-OpenSA-700">Category</span>
+                        <div class="dropdown-wrapper" onclick="showDropdown('categories')">
+                            <div class="d-flex">
+                                <div class="select fm-OpenSA-400">
+                                    Select new category
+                                </div>
+                                <div class="select-icon">
+                                    <div>
+                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none" class="posX"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M2.2 0H1.41421C0.523309 0 0.0771403 1.07714 0.707105 1.70711L6.29289 7.29289C6.68342 7.68342 7.31658 7.68342 7.70711 7.29289L13.2929 1.70711C13.9229 1.07714 13.4767 0 12.5858 0H11.8H7H2.2Z"
+                                                fill="#4589FF" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option-wrapper d-flex flex-col d-none" id="categories"
+                                onclick="stopProp(event)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-overlay-edit-prio">
+                        <div class="prio-container" id="priorities">
+
+
+                        </div>
+                    </div>
+                    <div class="task-overlay-edit-descr">
+                        <span class="fm-OpenSA-700">Description</span>
+                        <div>
+                            <textarea class="fm-OpenSA-400" id="description" required></textarea>
+                            <img src="./img/icons/textarea icon.png">
+                        </div>
+                    </div>
+                    <div class="add-task-subtask">
+                        <span class="fm-OpenSA-700">Subtask</span>
+                        <div class="subtask-input">
+                            <input class=" subtask fm-OpenSA-400" type="text" placeholder="Add new subtask" required>
+                        </div>
+                        <span class="required fm-inter-400 d-none">This field is required</span>
+                        <div class="subtask-container">
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <section id="modal" class="d-none modal-add-contact">
+
+        <div class="modal-x">
+            <button onclick="hideModal('modal')">X</button>
+        </div>
+
+        <div class="modal-head">
+            <img src="./img/icons/Join.png" alt="joinLogoPNG">
+            <h2>Add contact</h2>
+            <p>Tasks are better with a team!</p>
+        </div>
+        <div class="contact-add">
+            <div class="circle-120"><img src="./img/icons/user_white.png" alt="userPNG"></div>
+            <form onsubmit="addContact(); return false;" class=" add-contact-form" action="#">
+                <div class="input-field-row">
+                    <input id="add-contact-name" class="input-field" type="text" placeholder="Name" required>
+                    <img src="./img/icons/user.png" alt="userPNG">
+                </div>
+                <div class="input-field-row">
+                    <input id="add-contact-email" class="input-field" type="email" placeholder="E-Mail" required>
+                    <img src="./img/icons/Mail.png" alt="emailPNG">
+                </div>
+                <div class="input-field-row">
+                    <input oninput="covertDnOnInput()" id="add-contact-phone" class="input-field" type="number"
+                        placeholder="Phone" min="1" max="9999999999999" maxlength="13" required>
+                    <img src="./img/icons/phone.png" alt="phonePNG">
+                </div>
+
+                <div class="formular-bottom">
+
+                    <div class="create">
+                        <button id="create-contact-btn" class="create-contact-btn">Create contact</button>
+                        <img class="btn-image" src="./img/icons/accept.png" alt="createContactPNG">
+                    </div>
+                    <div onclick="hideModal('modal')" class="cancel">
+                        <button type="button" id="cancel" class="cancel-btn"
+                            formnovalidate="formnovalidate">Cancel</button>
+                        <img class="btn-image" src="./img/icons/Cancel.png" alt="cancelPNG">
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+
+    </section>
+    <section id="edit-contact-modal" class="d-none modal-add-contact">
+        <div class="modal-head-edit">
+            <div onclick="hideModal('edit-contact-modal')" class="close">x</div>
+            <img src="./img/icons/Join.png" alt="joinLogoPNG">
+            <h2>Edit contact</h2>
+        </div>
+        <div class="contact-edit">
+            <div class="circle-120"><img src="./img/icons/user_white.png" alt="userPNG"></div>
+            <form onsubmit="editContact(); return false;" class="add-contact-form">
+                <div class="input-field-row">
+                    <input id="contact-edit-name" class="input-field" type="text" placeholder="Name"
+                        value="Sebastian Köhler" required>
+                    <img src="./img/icons/user.png" alt="userPNG">
+                </div>
+                <div class="input-field-row">
+                    <input id="contact-edit-mail" class="input-field" type="text" placeholder="E-Mail"
+                        value="mail@koehler-sebastian.de" required>
+                    <img src="./img/icons/Mail.png" alt="emailPNG">
+                </div>
+                <div class="input-field-row">
+                    <input id="contact-edit-phone" class="input-field" type="number" placeholder="Phone"
+                        value="01749429305" required>
+                    <img src="./img/icons/phone.png" alt="phonePNG">
+                </div>
+
+                <div class="formular-bottom">
+                    <div onclick="saveChanges()" class="create">
+                        <button id="edit-save" class="create-contact-btn">Save</button>
+                        <img class="btn-image" src="./img/icons/accept.png" alt="createContactPNG">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </section>
+
+
+    <section id="modal-mobile" class="modal-mobile mobile-display d-none">
+        <div class="modal-mobile-head">
+            <span onclick="hideMobileModal()" class="mobile-close">X</span>
+            <h2>Add contact</h2>
+            <p>Tasks are better with a team!</p>
+        </div>
+        <div class="mobile-contact-add">
+            <div class="mobile-circle-120"><img src="./img/icons/user_white.png" alt="userPNG"></div>
+            <form onsubmit="addMobileContact(); return false" class=" add-contact-form" action="#">
+                <div class="input-field-row">
+                    <input id="mobile-add-contact-name" class="input-field" type="text" placeholder="Name" required>
+                    <img src="./img/icons/user.png" alt="userPNG">
+                </div>
+                <div class="input-field-row">
+                    <input id="mobile-add-contact-email" class="input-field" type="text" placeholder="E-Mail" required>
+                    <img src="./img/icons/Mail.png" alt="emailPNG">
+                </div>
+                <div class="input-field-row">
+                    <input id="mobile-add-contact-phone" class="input-field" type="number" placeholder="Phone" required>
+                    <img src="./img/icons/phone.png" alt="phonePNG">
+                </div>
+
+                <div class="mobile-formular-bottom">
+
+                    <div class="create">
+                        <button id="create-contact-btn" class="create-contact-btn">Create contact</button>
+                        <img class="btn-image" src="./img/icons/accept.png" alt="createContactPNG">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section id="modal-mobile-edit" class="modal-mobile mobile-display d-none">
+        <div class="modal-mobile-head">
+            <span onclick="hideEditMobileModal()" class="mobile-close">X</span>
+            <h2>Edit contact</h2>
+            <p>Tasks are better with a team!</p>
+        </div>
+        <div class="mobile-contact-add">
+            <div class="mobile-circle-120"><img id="user-img" src="./img/icons/user_white.png" alt="userPNG"></div>
+            <form onsubmit="saveMobileChanges(); return false" class=" add-contact-form" action="#">
+                <div class="input-field-row">
+                    <input id="mobile-edit-contact-name" class="input-field" type="text" placeholder="Name" required>
+                    <img src="./img/icons/user.png" alt="userPNG">
+                </div>
+                <div class="input-field-row">
+                    <input id="mobile-edit-contact-email" class="input-field" type="text" placeholder="E-Mail" required>
+                    <img src="./img/icons/Mail.png" alt="emailPNG">
+                </div>
+                <div class="input-field-row">
+                    <input id="mobile-edit-contact-phone" class="input-field" type="number" placeholder="Phone"
+                        required>
+                    <img src="./img/icons/phone.png" alt="phonePNG">
+                </div>
+
+                <div class="mobile-formular-bottom">
+
+                    <div class="create">
+                        <button id="create-contact-btn" class="create-contact-btn">Edit contact</button>
+                        <img class="btn-image" src="./img/icons/accept.png" alt="createContactPNG">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+    <section id="mobile-contact-details" class="d-none">
+        <div class="mobile-contact-head">
+            <span>Kanban Project Management Tool</span>
+        </div>
+        <div class="mobile-row">
+            <img class="mobile-back" src="./img/icons/arrow.png">
+        </div>
+        <div class="contact-details-top">
+            <div class="contact-details-inits">S K</div>
+            <div class="contact-details-name-container">
+                <div class="contact-details-name">Sebastian Köhler</div>
+                <div class="contact-details-add-task">
+                    <p>+</p> Add Task
+                </div>
+            </div>
+            <div class="mobile-row">
+                <span>Contact Information</span>
+            </div>
+            <div class="mobile-row">
+                <div class="mobile-row-container">
+                    <span>Email</span>
+                    <a href="mailto:mail@koehler-sebastian.de">mail@koehler-sebastian.de</a>
+                </div>
+            </div>
+            <div class="mobile-row">
+                <div class="mobile-row-container">
+                    <span>Mobil</span>
+                    <a href="tel:+491749429305">0174 9429305</a>
+                </div>
+            </div>
+            <div class="mobile-row">
+                <img src="./img/icons/edit button default.png">
+            </div>
+        </div>
+
+    </section>
+
+    <div w3-include-html="./templates/header.html"></div>
+
+    <div id="summary-main-page" class="main-page">
+        <!-- <div class="contact-mobile-button-ctn">
+            <div class="contact-mobile-btn">
+                <button id="addContact" class="contact-btn">New contact</button>
+            </div>
+        </div> -->
+
+        <div w3-include-html="./templates/nav.html"></div>
+
+        <section id="contacts" clas="d-flex">
+
+
+        </section>
+
+
+        <section id="contact-details">
+
+        </section>
+
+        <div onclick="showModal()" class="contact-btn-container">
+            <button id="addContact" class="contact-btn">New contact</button>
+            <img src="./img/icons/addContact.png" alt="addContactPNG">
+        </div>
+
+        <div id="mobile-add-Contact" onclick="showMobileModal()" class="mobile-contact-btn-container mobile-display">
+            <button id="addContact" class="contact-btn">New contact</button>
+            <img src="./img/icons/addContact.png" alt="addContactPNG">
+        </div>
+        <div>
+            <div w3-include-html="templates/legal.html" class="d-none" id="legal-template"></div>
+            <div w3-include-html="templates/help.html" class="d-none" id="help-template"></div>
+        </div>
+    </div>
+    <img id="add-to-board" class="add-to-board" src="img/icons/added to board.png">
+
+</body>
+
+</html>
